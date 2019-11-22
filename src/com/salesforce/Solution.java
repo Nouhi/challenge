@@ -69,7 +69,7 @@ public class Solution {
         case 2:
           System.out.println("-------------------------inside ls case 2--------------------");
           if(command.substring(3).equals("-r")){
-            listDirs(currentDir.getSubDir());
+            listDirsFiles(currentDir.getSubDir());
             //listFiles(currentDir);
           }else {
             currentDir.getSubDir().forEach(item -> System.out.print(item.getName() + " "));
@@ -132,12 +132,12 @@ public class Solution {
   }
 
   //passing the subDir List of the current dir
-  private static void listDirs(List<Dir> myList) {
+  private static void listDirsFiles(List<Dir> myList) {
       for (Dir dir : myList) {
         System.out.println(dir.getName());
         dir.getFiles().stream().forEach(
-          file -> System.out.println(file.getName()));
-        listDirs(dir.getSubDir());
+          file -> System.out.println("--- "+file.getName()));
+          listDirsFiles(dir.getSubDir());
       }
   }
   //list files recursively
